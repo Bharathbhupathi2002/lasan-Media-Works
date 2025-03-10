@@ -1,0 +1,135 @@
+
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Marketing", path: "/marketing" },
+    { name: "Pricing", path: "/pricing" },
+    { name: "Daily Checklist", path: "/daily-checklist" },
+    { name: "Careers", path: "/careers" },
+    { name: "About Us", path: "/about-us" },
+  ];
+
+  return (
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "py-2 bg-white/90 backdrop-blur-sm shadow-sm" : "py-4 bg-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        <Link to="/" className="flex items-center">
+          <h1 className="text-2xl md:text-[35px] font-bold logo-gradient">
+            LaSan Media Works
+          </h1>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`relative font-medium transition-colors duration-300 hover:text-lasan-blue ${
+                location.pathname === link.path ? "text-lasan-blue" : "text-gray-700"
+              }`}
+            >
+              {link.name}
+              {location.pathname === link.path && (
+                <motion.div
+                  layoutId="navIndicator"
+                  className="absolute -bottom-1 left-0 right-0 h-[2px] bg-lasan-blue"
+                  transition={{ duration: 0.3 }}
+                />
+              )}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden flex items-center text-gray-700"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            {isMobileMenuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMobileMenuOpen && (
+        <motion.nav
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden bg-white shadow-lg"
+        >
+          <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`py-2 block font-medium ${
+                  location.pathname === link.path
+                    ? "text-lasan-blue"
+                    : "text-gray-700"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </motion.nav>
+      )}
+    </header>
+  );
+};
+
+export default Navbar;
