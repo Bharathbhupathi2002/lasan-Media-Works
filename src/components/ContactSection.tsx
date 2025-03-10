@@ -5,16 +5,23 @@ import { motion } from "framer-motion";
 const ContactSection: React.FC = () => {
   return (
     <motion.div 
-      className="bg-gradient-to-b from-gray-50 to-white py-16"
+      id="contact"
+      className="bg-gray-50 py-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.4, duration: 0.6 }}
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-10">Contact Us</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Contact Us</h2>
+          <div className="w-20 h-1 bg-lasan-blue mx-auto mb-6"></div>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Get in touch with our team to discuss how we can help grow your business
+          </p>
+        </div>
         
-        <div className="max-w-4xl mx-auto glass-card p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-6">
+        <div className="max-w-5xl mx-auto kittl-card p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-8">
             <div className="flex items-start space-x-4">
               <div className="bg-lasan-blue/10 p-3 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-lasan-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,7 +51,7 @@ const ContactSection: React.FC = () => {
             </div>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div className="flex items-start space-x-4">
               <div className="bg-lasan-blue/10 p-3 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-lasan-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,7 +66,7 @@ const ContactSection: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-lasan-blue transition-colors"
                 >
-                  Follow us
+                  @lasan_media_works
                 </a>
               </div>
             </div>
@@ -78,11 +85,15 @@ const ContactSection: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-lasan-blue transition-colors"
                 >
-                  Connect with us
+                  LaSan Media Works
                 </a>
               </div>
             </div>
           </div>
+        </div>
+        
+        <div className="text-center mt-12">
+          <p className="text-gray-500">© {new Date().getFullYear()} LaSan Media Works. All rights reserved.</p>
         </div>
       </div>
     </motion.div>

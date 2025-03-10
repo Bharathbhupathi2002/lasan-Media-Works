@@ -68,77 +68,81 @@ const RequestForm: React.FC = () => {
   };
 
   return (
-    <div className="glass-card p-8 max-w-2xl mx-auto animate-fade-up">
+    <div className="kittl-card p-8 shadow-xl">
       <h3 className="text-2xl font-semibold text-center mb-2">
-        Your Needs, Our Priority
+        Request a Proposal
       </h3>
       <p className="text-center text-gray-600 mb-6">
-        Request a Proposal Today
+        Tell us about your project and requirements
       </p>
       
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="form-input"
-            placeholder="Your full name"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              className="form-input"
+              placeholder="Your full name"
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
+              Organization Name
+            </label>
+            <input
+              id="organization"
+              name="organization"
+              type="text"
+              required
+              value={formData.organization}
+              onChange={handleChange}
+              className="form-input"
+              placeholder="Your organization"
+            />
+          </div>
         </div>
         
-        <div>
-          <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
-            Organization Name
-          </label>
-          <input
-            id="organization"
-            name="organization"
-            type="text"
-            required
-            value={formData.organization}
-            onChange={handleChange}
-            className="form-input"
-            placeholder="Your organization"
-          />
-        </div>
-        
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-            Phone Number
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            className="form-input"
-            placeholder="Your contact number"
-          />
-        </div>
-        
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="form-input"
-            placeholder="Your email address"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              Phone Number
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              value={formData.phone}
+              onChange={handleChange}
+              className="form-input"
+              placeholder="Your contact number"
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className="form-input"
+              placeholder="Your email address"
+            />
+          </div>
         </div>
         
         <div>
@@ -161,7 +165,7 @@ const RequestForm: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="btn-primary w-full flex items-center justify-center"
+            className="kittl-button w-full flex items-center justify-center"
           >
             {isSubmitting ? (
               <>
@@ -169,7 +173,7 @@ const RequestForm: React.FC = () => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Submitting...
+                Processing...
               </>
             ) : (
               "Submit Request"

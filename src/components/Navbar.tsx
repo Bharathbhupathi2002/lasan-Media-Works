@@ -39,18 +39,18 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "py-2 bg-white/90 backdrop-blur-sm shadow-sm" : "py-4 bg-transparent"
+        isScrolled ? "py-3 bg-white/95 backdrop-blur-sm shadow-sm" : "py-5 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center">
-          <h1 className="text-2xl md:text-[35px] font-bold logo-gradient">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        <Link to="/" className="flex items-center z-10">
+          <h1 className="text-2xl md:text-3xl font-bold logo-gradient">
             LaSan Media Works
           </h1>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -73,7 +73,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden flex items-center text-gray-700"
+          className="md:hidden flex items-center text-gray-700 z-10"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -109,7 +109,7 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-white shadow-lg"
+          className="md:hidden bg-white shadow-lg absolute top-full left-0 right-0"
         >
           <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
             {navLinks.map((link) => (
