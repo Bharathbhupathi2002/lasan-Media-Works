@@ -1,6 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 interface ServiceCardProps {
   title: string;
@@ -19,6 +20,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   delay = 0,
   isPricing = false,
 }) => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    // Navigate to home page and scroll to the request form section
+    navigate('/#request-form');
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -56,7 +64,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               ))}
             </ul>
           </div>
-          <button className="mt-auto btn-primary w-full">Get Started</button>
+          <button 
+            className="mt-auto btn-primary w-full"
+            onClick={handleGetStarted}
+          >
+            Get Started
+          </button>
         </>
       ) : (
         <>

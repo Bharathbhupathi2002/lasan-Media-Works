@@ -5,7 +5,7 @@ import RequestForm from "@/components/RequestForm";
 
 const RequestFormSection = () => {
   return (
-    <section className="py-16 bg-white">
+    <section id="request-form" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div 
