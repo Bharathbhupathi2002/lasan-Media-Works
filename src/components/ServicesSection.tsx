@@ -1,65 +1,69 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { ArrowRight, BarChart2, Search, Globe } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
     {
+      icon: <Search className="h-6 w-6" />,
+      title: "Search Engine Optimization",
+      description: "Boost your visibility in search results with our data-driven SEO strategies tailored to your business goals.",
+      link: "#request-form"
+    },
+    {
+      icon: <Globe className="h-6 w-6" />,
       title: "Social Media Marketing",
-      description: "Engage and grow your audience with data-driven campaigns tailored to your brand",
-      image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=300&q=80"
+      description: "Engage your audience and build your brand with targeted social media campaigns designed for growth.",
+      link: "#request-form"
     },
     {
-      title: "SEO Optimization",
-      description: "Improve your online visibility and drive more traffic to your website",
-      image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=300&q=80"
-    },
-    {
-      title: "Branding Solutions",
-      description: "Create a strong brand identity that resonates with your target customers",
-      image: "https://images.unsplash.com/photo-1661956602944-249bcd04b63f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=300&q=80"
+      icon: <BarChart2 className="h-6 w-6" />,
+      title: "Performance Analytics",
+      description: "Make data-driven decisions with comprehensive analytics and reporting that showcase your ROI.",
+      link: "#request-form"
     }
   ];
 
   return (
-    <section id="services" className="py-16 bg-white">
+    <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our Digital Marketing Services
           </h2>
           <div className="w-20 h-1 bg-lasan-blue mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Comprehensive solutions to enhance your online presence and grow your business digitally
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive solutions to enhance your online presence and drive business growth
           </p>
         </motion.div>
         
-        <div className="kittl-grid">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div 
               key={index}
-              className="modern-card overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
+              className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
             >
-              <div className="h-48 overflow-hidden">
-                <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <a href="#" className="inline-flex items-center text-lasan-blue hover:underline group">
+              <div className="p-8">
+                <div className="bg-blue-50 w-14 h-14 rounded-lg flex items-center justify-center text-lasan-blue mb-6">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <a 
+                  href={service.link} 
+                  className="inline-flex items-center text-lasan-blue font-medium hover:underline group"
+                >
                   Learn more 
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </div>
             </motion.div>
