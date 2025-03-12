@@ -1,7 +1,6 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface ServiceCardProps {
   title: string;
@@ -21,10 +20,28 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   isPricing = false,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#request-form') {
+      const element = document.getElementById('request-form');
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const handleGetStarted = () => {
-    // Navigate to home page and scroll to the request form section
-    navigate('/#request-form');
+    if (location.pathname === '/') {
+      const element = document.getElementById('request-form');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate('/#request-form');
+    }
   };
 
   return (
