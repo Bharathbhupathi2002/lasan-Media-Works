@@ -15,14 +15,6 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex flex-col md:flex-row items-center mb-8">
-              <img 
-                src="/lovable-uploads/7415d699-b00e-45f3-973d-12a73b84371e.png" 
-                alt="LaSan Digital & SM Expert" 
-                className="h-32 md:h-40 mr-4 mb-4 md:mb-0"
-              />
-            </div>
-            
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Elevate Your <span className="text-lasan-blue">Digital Presence</span>
             </h1>
