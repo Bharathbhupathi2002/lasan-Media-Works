@@ -1,3 +1,4 @@
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -15,17 +16,6 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-.logo-gradient {
-  background: #3b82f6; /* Blue fill (Accent color 5) */
-  color: #3b82f6;
-  display: inline-block;
-  position: relative;
-  text-shadow: 4px 4px 0 #3b82f6; /* Hard shadow in blue */
-  -webkit-text-stroke: 1px white; /* White outline */
-  font-weight: bold;
-  letter-spacing: 0.5px;
 }
 
 .glass-card {

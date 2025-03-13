@@ -44,9 +44,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="flex items-center z-10">
-          <h1 className="text-2xl md:text-3xl font-bold logo-gradient">
-            LaSan Media Works
-          </h1>
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/7415d699-b00e-45f3-973d-12a73b84371e.png" 
+              alt="LaSan Logo" 
+              className="h-12 md:h-14 mr-3"
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
