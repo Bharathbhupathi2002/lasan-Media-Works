@@ -1,119 +1,21 @@
 
-import React, { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { AlertCircle, Loader2 } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-
-interface FormData {
-  name: string;
-  organization: string;
-  phone: string;
-  email: string;
-  requirements: string;
-  service?: string;
-}
+import React from "react";
+import FormField from "@/components/forms/FormField";
+import ServiceSelect from "@/components/forms/ServiceSelect";
+import RequirementsField from "@/components/forms/RequirementsField";
+import SubmitButton from "@/components/forms/SubmitButton";
+import ErrorAlert from "@/components/forms/ErrorAlert";
+import { useFormSubmission } from "@/components/forms/useFormSubmission";
+import { services } from "@/components/forms/services";
 
 const RequestForm: React.FC = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    organization: "",
-    phone: "",
-    email: "",
-    requirements: "",
-    service: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError(null);
-
-    try {
-      // Create a formatted message for the email
-      const emailContent = `
-        New Service Request:
-        
-        Name: ${formData.name}
-        Organization: ${formData.organization}
-        Phone: ${formData.phone}
-        Email: ${formData.email}
-        Service Interested In: ${formData.service || "Not specified"}
-        Requirements: ${formData.requirements}
-      `;
-      
-      // Use EmailJS to send the email
-      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          service_id: "service_30pxkij",  // Your EmailJS service ID
-          template_id: "template_wqbnx0j", // Your EmailJS template ID
-          user_id: "oTOEYtGYgjHI3i5Ye",   // Your EmailJS public key
-          template_params: {
-            to_email: "lasanmediaofficial@gmail.com",
-            from_name: formData.name,
-            from_email: formData.email,
-            message: emailContent,
-            service: formData.service,
-            phone: formData.phone,
-            organization: formData.organization,
-            requirements: formData.requirements,
-          }
-        })
-      });
-      
-      if (!response.ok) {
-        throw new Error('Email sending failed');
-      }
-      
-      toast({
-        title: "Proposal Request Submitted",
-        description: "We'll get back to you as soon as possible. Thank you!",
-        variant: "default",
-      });
-      
-      // Clear form
-      setFormData({
-        name: "",
-        organization: "",
-        phone: "",
-        email: "",
-        requirements: "",
-        service: "",
-      });
-      
-      console.log("Form submitted with data:", formData);
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setSubmitError("There was a problem submitting your request. Please try again or contact us directly.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const services = [
-    "Digital Marketing Services",
-    "Social Media Marketing Services",
-    "Sales Strategy Services",
-    "Experiential and Event Marketing",
-    "Influencer Marketing",
-    "Branding & 360° Solutions",
-    "Analytics and Optimization"
-  ];
+  const {
+    formData,
+    isSubmitting,
+    submitError,
+    handleChange,
+    handleSubmit
+  } = useFormSubmission();
 
   return (
     <div className="kittl-card p-8 shadow-xl">
@@ -124,134 +26,73 @@ const RequestForm: React.FC = () => {
         Tell us about your project and requirements
       </p>
       
-      {submitError && (
-        <Alert variant="destructive" className="mb-5">
-          <AlertCircle className="h-4 w-4" />
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>{submitError}</AlertDescription>
-        </Alert>
-      )}
+      <ErrorAlert message={submitError || ""} />
       
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-              Name
-            </label>
-            <Input
-              id="name"
-              name="name"
-              type="text"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full"
-              placeholder="Your full name"
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
-              Organization Name
-            </label>
-            <Input
-              id="organization"
-              name="organization"
-              type="text"
-              required
-              value={formData.organization}
-              onChange={handleChange}
-              className="w-full"
-              placeholder="Your organization"
-            />
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-              Phone Number
-            </label>
-            <Input
-              id="phone"
-              name="phone"
-              type="tel"
-              required
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full"
-              placeholder="Your contact number"
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
-            </label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full"
-              placeholder="Your email address"
-            />
-          </div>
-        </div>
-        
-        <div>
-          <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-            Service You're Interested In
-          </label>
-          <select
-            id="service"
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select a Service</option>
-            {services.map((service, index) => (
-              <option key={index} value={service}>
-                {service}
-              </option>
-            ))}
-          </select>
-        </div>
-        
-        <div>
-          <label htmlFor="requirements" className="block text-sm font-medium text-gray-700 mb-1">
-            Your Requirements
-          </label>
-          <textarea
-            id="requirements"
-            name="requirements"
-            rows={4}
+          <FormField
+            id="name"
+            name="name"
+            label="Name"
             required
-            value={formData.requirements}
+            value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Tell us about your project and requirements"
+            placeholder="Your full name"
+          />
+          
+          <FormField
+            id="organization"
+            name="organization"
+            label="Organization Name"
+            required
+            value={formData.organization}
+            onChange={handleChange}
+            placeholder="Your organization"
           />
         </div>
         
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <FormField
+            id="phone"
+            name="phone"
+            label="Phone Number"
+            type="tel"
+            required
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Your contact number"
+          />
+          
+          <FormField
+            id="email"
+            name="email"
+            label="Email"
+            type="email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Your email address"
+          />
+        </div>
+        
+        <ServiceSelect
+          id="service"
+          name="service"
+          value={formData.service || ""}
+          onChange={handleChange}
+          services={services}
+        />
+        
+        <RequirementsField
+          id="requirements"
+          name="requirements"
+          required
+          value={formData.requirements}
+          onChange={handleChange}
+        />
+        
         <div className="pt-2">
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full px-6 py-3 bg-lasan-blue text-white font-medium rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Processing...
-              </>
-            ) : (
-              "Submit Request"
-            )}
-          </Button>
+          <SubmitButton isSubmitting={isSubmitting} />
         </div>
       </form>
     </div>
