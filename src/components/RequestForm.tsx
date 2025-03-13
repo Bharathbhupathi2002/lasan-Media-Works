@@ -8,6 +8,7 @@ interface FormData {
   phone: string;
   email: string;
   requirements: string;
+  service?: string;
 }
 
 const RequestForm: React.FC = () => {
@@ -19,10 +20,11 @@ const RequestForm: React.FC = () => {
     phone: "",
     email: "",
     requirements: "",
+    service: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -33,11 +35,41 @@ const RequestForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // In a real implementation, you would send this data to a server endpoint
-      // that would handle the email sending to lasanmediaofficial@gmail.com
+      // Create a formatted message for the email
+      const emailContent = `
+        New Service Request:
+        
+        Name: ${formData.name}
+        Organization: ${formData.organization}
+        Phone: ${formData.phone}
+        Email: ${formData.email}
+        Service Interested In: ${formData.service || "Not specified"}
+        Requirements: ${formData.requirements}
+      `;
       
-      // For demonstration, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // In a live environment, you would need a serverless function or backend API
+      // Here we're using a simple email service for demonstration
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          service_id: "YOUR_SERVICE_ID", // Replace with your EmailJS service ID in production
+          template_id: "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID in production
+          user_id: "YOUR_PUBLIC_KEY", // Replace with your EmailJS user ID in production
+          template_params: {
+            to_email: "lasanmediaofficial@gmail.com",
+            from_name: formData.name,
+            from_email: formData.email,
+            message: emailContent
+          }
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Email sending failed');
+      }
       
       toast({
         title: "Proposal Request Submitted",
@@ -52,13 +84,14 @@ const RequestForm: React.FC = () => {
         phone: "",
         email: "",
         requirements: "",
+        service: "",
       });
       
       console.log("Form submitted with data:", formData);
     } catch (error) {
       toast({
         title: "Submission Failed",
-        description: "Please try again or contact us directly.",
+        description: "Please try again or contact us directly at lasanmediaofficial@gmail.com",
         variant: "destructive",
       });
       console.error("Form submission error:", error);
@@ -66,6 +99,16 @@ const RequestForm: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+
+  const services = [
+    "Digital Marketing Services",
+    "Social Media Marketing Services",
+    "Sales Strategy Services",
+    "Experiential and Event Marketing",
+    "Influencer Marketing",
+    "Branding & 360° Solutions",
+    "Analytics and Optimization"
+  ];
 
   return (
     <div className="kittl-card p-8 shadow-xl">
@@ -89,7 +132,7 @@ const RequestForm: React.FC = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              className="form-input"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your full name"
             />
           </div>
@@ -105,7 +148,7 @@ const RequestForm: React.FC = () => {
               required
               value={formData.organization}
               onChange={handleChange}
-              className="form-input"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your organization"
             />
           </div>
@@ -123,7 +166,7 @@ const RequestForm: React.FC = () => {
               required
               value={formData.phone}
               onChange={handleChange}
-              className="form-input"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your contact number"
             />
           </div>
@@ -139,10 +182,30 @@ const RequestForm: React.FC = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              className="form-input"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your email address"
             />
           </div>
+        </div>
+        
+        <div>
+          <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+            Service You're Interested In
+          </label>
+          <select
+            id="service"
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            <option value="">Select a Service</option>
+            {services.map((service, index) => (
+              <option key={index} value={service}>
+                {service}
+              </option>
+            ))}
+          </select>
         </div>
         
         <div>
@@ -156,7 +219,7 @@ const RequestForm: React.FC = () => {
             required
             value={formData.requirements}
             onChange={handleChange}
-            className="form-input"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="Tell us about your project and requirements"
           />
         </div>
@@ -165,11 +228,11 @@ const RequestForm: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="kittl-button w-full flex items-center justify-center"
+            className="w-full px-6 py-3 bg-lasan-blue text-white font-medium rounded-md hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             {isSubmitting ? (
               <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
