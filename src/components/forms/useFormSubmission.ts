@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 interface FormData {
   name: string;
@@ -37,6 +37,11 @@ export const useFormSubmission = () => {
     setSubmitError(null);
 
     try {
+      // Validate form data
+      if (!formData.name || !formData.email || !formData.requirements) {
+        throw new Error('Please fill in all required fields');
+      }
+
       // Create a formatted message for the email
       const emailContent = `
         New Service Request:
@@ -60,7 +65,7 @@ export const useFormSubmission = () => {
           template_id: "template_wqbnx0j", // Your EmailJS template ID
           user_id: "oTOEYtGYgjHI3i5Ye",   // Your EmailJS public key
           template_params: {
-            to_email: "lasanmediaofficial@gmail.com",
+            to_name: "LaSan Media Team",
             from_name: formData.name,
             from_email: formData.email,
             message: emailContent,
@@ -73,6 +78,8 @@ export const useFormSubmission = () => {
       });
       
       if (!response.ok) {
+        const errorData = await response.text();
+        console.error("EmailJS error response:", errorData);
         throw new Error('Email sending failed');
       }
       
@@ -92,7 +99,7 @@ export const useFormSubmission = () => {
         service: "",
       });
       
-      console.log("Form submitted with data:", formData);
+      console.log("Form submitted successfully with data:", formData);
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitError("There was a problem submitting your request. Please try again or contact us directly.");

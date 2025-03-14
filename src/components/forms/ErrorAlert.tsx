@@ -12,8 +12,8 @@ const ErrorAlert: React.FC<ErrorAlertProps> = ({ message }) => {
   
   return (
     <Alert variant="destructive" className="mb-5">
-      <AlertCircle className="h-4 w-4" />
-      <AlertTitle>Error</AlertTitle>
+      <AlertCircle className="h-4 w-4 mr-2" />
+      <AlertTitle className="mb-1">Error</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
     </Alert>
   );

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -42,7 +43,7 @@ const Navbar = () => {
         isScrolled ? "py-3 bg-white/95 backdrop-blur-sm shadow-sm" : "py-5 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 flex items-center">
         <Link to="/" className="flex items-center z-10">
           <div className="flex items-center">
             <img 
@@ -53,8 +54,8 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        {/* Desktop Navigation - Added ml-16 for spacing from logo */}
+        <nav className="hidden md:flex items-center space-x-8 ml-16">
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -77,7 +78,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden flex items-center text-gray-700 z-10"
+          className="md:hidden flex items-center text-gray-700 z-10 ml-auto"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
