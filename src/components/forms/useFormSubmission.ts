@@ -29,6 +29,7 @@ export const useFormSubmission = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    console.log(`Field ${name} updated to: ${value}`);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,11 +37,15 @@ export const useFormSubmission = () => {
     setIsSubmitting(true);
     setSubmitError(null);
 
+    console.log("Form submission started with data:", formData);
+
     try {
       // Validate form data
       if (!formData.name || !formData.email || !formData.requirements) {
         throw new Error('Please fill in all required fields');
       }
+
+      console.log("Form validation passed");
 
       // Create a formatted message for the email
       const emailContent = `
@@ -54,34 +59,43 @@ export const useFormSubmission = () => {
         Requirements: ${formData.requirements}
       `;
       
+      // Prepare the request payload
+      const emailjsPayload = {
+        service_id: "service_1wy2h5n",
+        template_id: "template_jxexkjf",
+        user_id: "r_B3a_JOPrPkxf8zv",
+        template_params: {
+          to_name: "LaSan Media Team",
+          from_name: formData.name,
+          from_email: formData.email,
+          message: emailContent,
+          service: formData.service,
+          phone: formData.phone,
+          organization: formData.organization,
+          requirements: formData.requirements,
+        }
+      };
+      
+      console.log("Sending EmailJS request with payload:", emailjsPayload);
+      
       // Use EmailJS to send the email
       const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          service_id: "service_1wy2h5n",  // Updated service ID
-          template_id: "template_jxexkjf", // Updated template ID
-          user_id: "r_B3a_JOPrPkxf8zv",   // Updated user ID
-          template_params: {
-            to_name: "LaSan Media Team",
-            from_name: formData.name,
-            from_email: formData.email,
-            message: emailContent,
-            service: formData.service,
-            phone: formData.phone,
-            organization: formData.organization,
-            requirements: formData.requirements,
-          }
-        })
+        body: JSON.stringify(emailjsPayload)
       });
+      
+      console.log("EmailJS API response status:", response.status);
       
       if (!response.ok) {
         const errorData = await response.text();
         console.error("EmailJS error response:", errorData);
-        throw new Error('Email sending failed');
+        throw new Error('Email sending failed: ' + errorData);
       }
+      
+      console.log("Email sent successfully");
       
       toast({
         title: "Proposal Request Submitted",
@@ -99,7 +113,7 @@ export const useFormSubmission = () => {
         service: "",
       });
       
-      console.log("Form submitted successfully with data:", formData);
+      console.log("Form reset after successful submission");
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitError("There was a problem submitting your request. Please try again or contact us directly.");
