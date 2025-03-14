@@ -61,7 +61,7 @@ export const useFormSubmission = () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          service_id: "service_30pxkij",  // Your EmailJS service ID
+          service_id: "service_1wy2h5n",  // Updated service ID
           template_id: "template_wqbnx0j", // Your EmailJS template ID
           user_id: "oTOEYtGYgjHI3i5Ye",   // Your EmailJS public key
           template_params: {
