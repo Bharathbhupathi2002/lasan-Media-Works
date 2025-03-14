@@ -70,7 +70,7 @@ const ServicesSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our Services
           </h2>
-          <div className="w-20 h-1 bg-lasan-blue mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-primary-purple mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Comprehensive solutions to enhance your online presence and drive business growth
           </p>
@@ -93,14 +93,14 @@ const ServicesSection = () => {
                 />
               </div>
               <div className="p-6">
-                <div className="bg-blue-50 w-14 h-14 rounded-lg flex items-center justify-center text-lasan-blue mb-6">
+                <div className="bg-blue-50 w-14 h-14 rounded-lg flex items-center justify-center text-primary-purple mb-6">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-4">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
                 <a 
                   href="#request-form" 
-                  className="inline-flex items-center text-lasan-blue font-medium hover:underline"
+                  className="inline-flex items-center text-primary-purple font-medium hover:underline"
                 >
                   Request this service
                 </a>

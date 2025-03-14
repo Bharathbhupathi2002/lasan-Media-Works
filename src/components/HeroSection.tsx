@@ -16,7 +16,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Elevate Your <span className="text-lasan-blue">Digital Presence</span>
+              Elevate Your <span className="text-primary-purple">Digital Presence</span>
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-xl">
@@ -24,11 +24,18 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <a href="#services" className="px-8 py-4 bg-lasan-blue text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-300 group flex items-center">
+              <a 
+                href="#services" 
+                className="px-8 py-4 bg-primary-purple text-white rounded-lg font-medium hover:bg-secondary-purple transition-all duration-300 group flex items-center"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('services')?.scrollIntoView({behavior: 'smooth'});
+                }}
+              >
                 Our Services
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
-              <a href="#request-form" className="px-8 py-4 bg-white border-2 border-lasan-blue text-lasan-blue rounded-lg font-medium hover:bg-blue-50 transition-all duration-300">
+              <a href="#request-form" className="px-8 py-4 bg-white border-2 border-primary-purple text-primary-purple rounded-lg font-medium hover:bg-blue-50 transition-all duration-300">
                 Get Started
               </a>
             </div>
@@ -41,7 +48,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl blur-lg opacity-20"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary-purple to-secondary-purple rounded-2xl blur-lg opacity-20"></div>
               <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&h=700&q=80" 

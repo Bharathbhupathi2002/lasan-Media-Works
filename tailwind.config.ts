@@ -33,11 +33,19 @@ export default {
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					purple: '#9b87f5', // Added to match logo
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					purple: '#7E69AB', // Added to match logo
+				},
+				tertiary: {
+					purple: '#6E59A5', // Added to match logo
+				},
+				neutral: {
+					gray: '#8E9196', // Added to match logo
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
