@@ -1,11 +1,30 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Facebook, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
 
 const HeroSection = () => {
+  const iconVariants = {
+    initial: { scale: 0, opacity: 0 },
+    animate: (i: number) => ({
+      scale: 1,
+      opacity: 1,
+      transition: {
+        delay: 0.2 + (i * 0.1),
+        duration: 0.3,
+        type: "spring",
+        stiffness: 100
+      }
+    }),
+    hover: {
+      scale: 1.1,
+      y: -5,
+      transition: { duration: 0.3 }
+    }
+  };
+
   return (
-    <section className="relative py-24 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
+    <section className="relative py-24 bg-gradient-to-br from-blue-900 to-purple-900 overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -15,18 +34,18 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Elevate Your <span className="text-primary-purple">Digital Presence</span>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+              Elevate Your <span className="text-cyan-400">Digital Presence</span>
             </h1>
             
-            <p className="text-xl text-gray-600 mb-8 max-w-xl">
-              Custom digital marketing strategies that drive growth and deliver measurable results for your business.
+            <p className="text-xl text-blue-100 mb-8 max-w-xl">
+              Custom digital marketing strategies that drive growth and deliver measurable results for your business across all social media platforms.
             </p>
             
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
               <a 
                 href="#services" 
-                className="px-8 py-4 bg-primary-purple text-white rounded-lg font-medium hover:bg-secondary-purple transition-all duration-300 group flex items-center"
+                className="px-8 py-4 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600 transition-all duration-300 group flex items-center"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('services')?.scrollIntoView({behavior: 'smooth'});
@@ -35,9 +54,31 @@ const HeroSection = () => {
                 Our Services
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
-              <a href="#request-form" className="px-8 py-4 bg-white border-2 border-primary-purple text-primary-purple rounded-lg font-medium hover:bg-blue-50 transition-all duration-300">
+              <a href="#request-form" className="px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 rounded-lg font-medium hover:bg-cyan-900/30 transition-all duration-300">
                 Get Started
               </a>
+            </div>
+            
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              {[
+                { Icon: Facebook, color: "bg-blue-600" },
+                { Icon: Twitter, color: "bg-blue-400" },
+                { Icon: Instagram, color: "bg-pink-600" },
+                { Icon: Youtube, color: "bg-red-600" },
+                { Icon: Linkedin, color: "bg-blue-700" }
+              ].map((platform, i) => (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  variants={iconVariants}
+                  initial="initial"
+                  animate="animate"
+                  whileHover="hover"
+                  className={`w-12 h-12 ${platform.color} rounded-full flex items-center justify-center shadow-lg cursor-pointer`}
+                >
+                  <platform.Icon size={20} color="white" />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
           
@@ -48,14 +89,39 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary-purple to-secondary-purple rounded-2xl blur-lg opacity-20"></div>
-              <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&h=700&q=80" 
-                  alt="Digital Marketing Team" 
-                  className="w-full h-full object-cover"
-                />
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur-lg opacity-30"></div>
+              <div className="relative bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-1">
+                <div className="bg-black/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-2xl">
+                  <img 
+                    src="/lovable-uploads/6f353001-20bd-4365-abbc-e9a73d2b044b.png" 
+                    alt="Digital Marketing" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
+              
+              {/* Floating social media icons */}
+              <motion.div 
+                className="absolute -right-6 top-1/4"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+              >
+                <div className="w-14 h-14 bg-blue-400 rounded-xl flex items-center justify-center shadow-lg float-animation">
+                  <Twitter size={24} color="white" />
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -left-4 top-1/3"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.0, duration: 0.5 }}
+              >
+                <div className="w-12 h-12 bg-pink-600 rounded-xl flex items-center justify-center shadow-lg float-animation">
+                  <Instagram size={20} color="white" />
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
