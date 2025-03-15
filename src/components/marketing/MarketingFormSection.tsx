@@ -13,24 +13,72 @@ const MarketingFormSection: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+        <motion.div 
+          className="text-center mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.div 
+            className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1, rotate: 360 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 260, 
+              damping: 20,
+              delay: 0.6 
+            }}
+          >
             <MessageSquare className="h-8 w-8 text-blue-600" />
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          </motion.div>
+          
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-3"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
             Start Your Digital Journey
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          
+          <motion.div 
+            className="w-20 h-1 bg-blue-600 mx-auto mb-6"
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+          ></motion.div>
+          
+          <motion.p 
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
             Ready to transform your social media presence? Fill out the form below and our team of digital marketing experts will create a customized strategy for your brand.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100">
+        <motion.div 
+          className="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-100"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+            delay: 1.0
+          }}
+          whileHover={{ 
+            boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)",
+            y: -5,
+            transition: { duration: 0.3 }
+          }}
+        >
           <div className="p-8">
             <RequestForm />
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
