@@ -12,14 +12,15 @@ const MarketingHero: React.FC = () => {
     }
   };
   
+  // Fixed floating icons variants to match TypeScript expectations
   const floatingIconsVariants = {
-    initial: (i: number) => ({
+    initial: {
       y: 0,
       x: 0,
       scale: 1,
       rotate: 0,
       opacity: 0.9,
-    }),
+    },
     animate: (i: number) => ({
       y: [0, -(5 + i * 2), 0],
       x: [0, (i % 2 === 0 ? 5 : -5), 0],
@@ -29,7 +30,7 @@ const MarketingHero: React.FC = () => {
       transition: {
         duration: 3 + i * 0.5,
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "mirror" as const,
         ease: "easeInOut"
       }
     })
