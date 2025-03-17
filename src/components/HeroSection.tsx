@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Facebook, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Button } from "./ui/button";
 
 const HeroSection = () => {
   const iconVariants = {
@@ -20,6 +21,14 @@ const HeroSection = () => {
       scale: 1.1,
       y: -5,
       transition: { duration: 0.3 }
+    }
+  };
+
+  const scrollToSection = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -43,20 +52,20 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
-              <a 
-                href="#services" 
-                className="px-8 py-4 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600 transition-all duration-300 group flex items-center"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('services')?.scrollIntoView({behavior: 'smooth'});
-                }}
+              <Button 
+                onClick={scrollToSection('services')}
+                className="px-8 py-4 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600 transition-all duration-300 group flex items-center h-auto"
               >
                 Our Services
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-              <a href="#request-form" className="px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 rounded-lg font-medium hover:bg-cyan-900/30 transition-all duration-300">
+              </Button>
+              <Button 
+                onClick={scrollToSection('request-form')}
+                variant="outline"
+                className="px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 rounded-lg font-medium hover:bg-cyan-900/30 transition-all duration-300 h-auto"
+              >
                 Get Started
-              </a>
+              </Button>
             </div>
             
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
