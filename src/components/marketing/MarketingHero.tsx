@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Facebook, Twitter, Instagram, Youtube, Camera, Linkedin } from "lucide-react";
@@ -14,13 +13,13 @@ const MarketingHero: React.FC = () => {
   
   // Fixed floating icons variants to match TypeScript expectations
   const floatingIconsVariants = {
-    initial: {
+    initial: (i: number) => ({
       y: 0,
       x: 0,
       scale: 1,
       rotate: 0,
       opacity: 0.9,
-    },
+    }),
     animate: (i: number) => ({
       y: [0, -(5 + i * 2), 0],
       x: [0, (i % 2 === 0 ? 5 : -5), 0],

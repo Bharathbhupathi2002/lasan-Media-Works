@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Facebook, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
@@ -51,20 +50,13 @@ const HeroSection = () => {
               Custom digital marketing strategies that drive growth and deliver measurable results for your business across all social media platforms.
             </p>
             
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-8">
-              <Button 
-                onClick={scrollToSection('services')}
-                className="px-8 py-4 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600 transition-all duration-300 group flex items-center h-auto"
-              >
-                Our Services
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
+            <div className="flex justify-center md:justify-start mb-8">
               <Button 
                 onClick={scrollToSection('request-form')}
-                variant="outline"
-                className="px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 rounded-lg font-medium hover:bg-cyan-900/30 transition-all duration-300 h-auto"
+                className="px-8 py-4 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600 transition-all duration-300 group flex items-center h-auto text-lg"
               >
                 Get Started
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
             </div>
             
