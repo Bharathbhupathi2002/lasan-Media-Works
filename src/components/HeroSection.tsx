@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Facebook, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
@@ -23,8 +24,7 @@ const HeroSection = () => {
     }
   };
 
-  const scrollToSection = (id: string) => (e: React.MouseEvent) => {
-    e.preventDefault();
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -52,7 +52,7 @@ const HeroSection = () => {
             
             <div className="flex justify-center md:justify-start mb-8">
               <Button 
-                onClick={scrollToSection('request-form')}
+                onClick={() => scrollToSection('request-form')}
                 className="px-8 py-4 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600 transition-all duration-300 group flex items-center h-auto text-lg"
               >
                 Get Started
