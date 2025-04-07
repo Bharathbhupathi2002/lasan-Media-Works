@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import Marketing from "./pages/Marketing";
+import Services from "./pages/Services";
 import Pricing from "./pages/Pricing";
 import DailyChecklist from "./pages/DailyChecklist";
 import Careers from "./pages/Careers";
@@ -50,6 +51,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/marketing" element={<Marketing />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/daily-checklist" element={<DailyChecklist />} />
             <Route path="/careers" element={<Careers />} />
