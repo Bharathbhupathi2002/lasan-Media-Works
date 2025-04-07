@@ -59,7 +59,7 @@ const Services = () => {
                     transition={{
                       duration: 3,
                       repeat: Infinity,
-                      repeatType: "reverse" as const,
+                      repeatType: "mirror" as const,
                       delay: i * 0.2
                     }}
                     className="w-16 h-16 mb-3 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-2xl shadow-lg"

@@ -1,7 +1,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import ServiceCard from "./ServiceCard";
 import { 
   Search, 
   Share2, 
@@ -11,6 +10,8 @@ import {
   Palette, 
   BarChart
 } from "lucide-react";
+
+import { Card, CardContent } from "@/components/ui/card";
 
 const ServicesSection = () => {
   const services = [
@@ -84,6 +85,7 @@ const ServicesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+              whileHover={{ scale: 1.03 }}
             >
               <div className="h-48 overflow-hidden">
                 <img 
