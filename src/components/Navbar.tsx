@@ -40,78 +40,72 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "py-2 bg-white shadow-md" 
-          : "py-3 bg-gradient-to-r from-blue-900/90 to-purple-900/90 backdrop-blur-md"
+        isScrolled ? "py-3 bg-white/95 backdrop-blur-sm shadow-sm" : "py-5 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center z-10">
-            <div className="flex items-center">
-              <img 
-                src="/lovable-uploads/7415d699-b00e-45f3-973d-12a73b84371e.png" 
-                alt="LaSan Logo" 
-                className={`h-10 md:h-12 mr-3 transition-all ${isScrolled ? 'filter-none' : 'brightness-125'}`}
-              />
-            </div>
-          </Link>
+      <div className="container mx-auto px-4 flex items-center">
+        <Link to="/" className="flex items-center z-10">
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/7415d699-b00e-45f3-973d-12a73b84371e.png" 
+              alt="LaSan Logo" 
+              className="h-12 md:h-14 mr-3"
+            />
+          </div>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`relative font-medium transition-colors duration-300 px-3 py-2 rounded-md ${
-                  location.pathname === link.path 
-                    ? (isScrolled ? "text-blue-600 bg-blue-50" : "text-white bg-white/10") 
-                    : (isScrolled ? "text-gray-700 hover:text-blue-600" : "text-blue-100 hover:text-white hover:bg-white/10")
-                }`}
-              >
-                {link.name}
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="navIndicator"
-                    className={`absolute -bottom-1 left-0 right-0 h-0.5 ${isScrolled ? "bg-blue-600" : "bg-white"}`}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden flex items-center z-10"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke={isScrolled ? "currentColor" : "white"}
-              className="w-6 h-6"
+        {/* Desktop Navigation - Added ml-16 for spacing from logo */}
+        <nav className="hidden md:flex items-center space-x-8 ml-16">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`relative font-medium transition-colors duration-300 hover:text-lasan-blue ${
+                location.pathname === link.path ? "text-lasan-blue" : "text-gray-700"
+              }`}
             >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
+              {link.name}
+              {location.pathname === link.path && (
+                <motion.div
+                  layoutId="navIndicator"
+                  className="absolute -bottom-1 left-0 right-0 h-[2px] bg-lasan-blue"
+                  transition={{ duration: 0.3 }}
                 />
               )}
-            </svg>
-          </button>
-        </div>
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden flex items-center text-gray-700 z-10 ml-auto"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            {isMobileMenuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
       </div>
 
       {/* Mobile Navigation */}
@@ -127,10 +121,10 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`py-2 px-4 block font-medium rounded-md ${
+                className={`py-2 block font-medium ${
                   location.pathname === link.path
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "text-lasan-blue"
+                    : "text-gray-700"
                 }`}
               >
                 {link.name}
