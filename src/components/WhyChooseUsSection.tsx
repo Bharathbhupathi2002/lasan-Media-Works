@@ -35,6 +35,33 @@ const WhyChooseUsSection = () => {
         <div className="absolute top-60 -right-20 w-60 h-60 bg-purple-200 rounded-full filter blur-3xl"></div>
         <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-teal-200 rounded-full filter blur-3xl"></div>
       </div>
+      
+      {/* Marketing image above section */}
+      <motion.div 
+        className="relative max-w-5xl mx-auto mb-16"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl blur opacity-20"></div>
+        <div className="relative rounded-xl overflow-hidden shadow-2xl">
+          <img 
+            src="/lovable-uploads/08f6b81b-955c-4225-92fa-8b9c7d30eba3.png" 
+            alt="Social Media Marketing Cycle" 
+            className="w-full h-auto"
+          />
+          <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-transparent"></div>
+          <motion.div 
+            className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            <h3 className="text-white text-2xl font-bold">Strategic Digital Marketing Solutions</h3>
+            <p className="text-white/90 mt-2">The complete cycle that powers your social media success</p>
+          </motion.div>
+        </div>
+      </motion.div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16">
