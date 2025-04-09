@@ -6,7 +6,7 @@ const PricingPlans: React.FC = () => {
   const pricingPlans = [
     {
       title: "Starter SM Marketing",
-      price: "₹8,000/month",
+      price: "₹15,000/month",
       features: [
         "Social media management for 2 platforms",
         "Basic SEO",
@@ -17,7 +17,7 @@ const PricingPlans: React.FC = () => {
     },
     {
       title: "Growth SM Marketing",
-      price: "₹12,000/month",
+      price: "₹25,000/month",
       features: [
         "Social media management for 3 platforms",
         "Advanced SEO",
@@ -28,7 +28,7 @@ const PricingPlans: React.FC = () => {
     },
     {
       title: "Pro SM Marketing",
-      price: "₹15,000/month",
+      price: "₹45,000/month",
       features: [
         "Social media management for 4 platforms",
         "Comprehensive SEO",
