@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Instagram, Briefcase, ExternalLink } from "lucide-react";
+import { Mail, Phone, Instagram, Briefcase, ExternalLink, MapPin } from "lucide-react";
 
 const ContactSection: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -20,6 +20,13 @@ const ContactSection: React.FC = () => {
       value: "+91 7032 360 404",
       link: "tel:+917032360404",
       gradientClass: "from-purple-500 to-pink-400"
+    },
+    {
+      icon: <MapPin className="h-5 w-5" />,
+      title: "Address",
+      value: "Kotakommala St, Reddy and Reddy's Colony, Tirupati, Andhra Pradesh 517501",
+      link: "https://maps.google.com/?q=Kotakommala+St,+Reddy+and+Reddy's+Colony,+Tirupati,+Andhra+Pradesh+517501",
+      gradientClass: "from-green-500 to-emerald-400"
     },
     {
       icon: <Instagram className="h-5 w-5" />,
