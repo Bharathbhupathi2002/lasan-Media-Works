@@ -25,7 +25,7 @@ const ContactSection: React.FC = () => {
       icon: <MapPin className="h-5 w-5" />,
       title: "Address",
       value: "Kotakommala St, Reddy and Reddy's Colony, Tirupati, Andhra Pradesh 517501",
-      link: "https://maps.google.com/?q=Kotakommala+St,+Reddy+and+Reddy's+Colony,+Tirupati,+Andhra+Pradesh+517501",
+      link: "https://maps.app.goo.gl/xVdnczt5Ucsdjkxz5",
       gradientClass: "from-green-500 to-emerald-400"
     },
     {
