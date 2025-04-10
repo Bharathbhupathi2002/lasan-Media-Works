@@ -8,35 +8,35 @@ const ContactSection: React.FC = () => {
   
   const contactInfo = [
     {
-      icon: <Mail className="h-5 w-5" />,
+      icon: <Mail className="h-6 w-6" />,
       title: "Email",
       value: "lasanmediaofficial@gmail.com",
       link: "mailto:lasanmediaofficial@gmail.com",
       gradientClass: "from-blue-500 to-cyan-400"
     },
     {
-      icon: <Phone className="h-5 w-5" />,
+      icon: <Phone className="h-6 w-6" />,
       title: "Phone",
       value: "+91 7032 360 404",
       link: "tel:+917032360404",
       gradientClass: "from-purple-500 to-pink-400"
     },
     {
-      icon: <MapPin className="h-5 w-5" />,
+      icon: <MapPin className="h-6 w-6" />,
       title: "Address",
       value: "Kotakommala St, Reddy and Reddy's Colony, Tirupati, Andhra Pradesh 517501",
       link: "https://maps.app.goo.gl/xVdnczt5Ucsdjkxz5",
       gradientClass: "from-green-500 to-emerald-400"
     },
     {
-      icon: <Instagram className="h-5 w-5" />,
+      icon: <Instagram className="h-6 w-6" />,
       title: "Instagram",
       value: "@lasan_media_works",
       link: "https://www.instagram.com/lasan_media_works/",
       gradientClass: "from-yellow-400 via-red-500 to-purple-600"
     },
     {
-      icon: <Briefcase className="h-5 w-5" />,
+      icon: <Briefcase className="h-6 w-6" />,
       title: "LinkedIn",
       value: "LaSan Media Works",
       link: "https://www.linkedin.com/company/lasan-media-works/?originalSubdomain=in",
@@ -61,15 +61,15 @@ const ContactSection: React.FC = () => {
           </p>
         </div>
         
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {contactInfo.map((item, index) => (
               <motion.a
                 key={index}
                 href={item.link}
-                target={item.title === "Instagram" || item.title === "LinkedIn" ? "_blank" : ""}
-                rel={item.title === "Instagram" || item.title === "LinkedIn" ? "noopener noreferrer" : ""}
-                className="group bg-white border border-gray-100 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                target={item.title === "Instagram" || item.title === "LinkedIn" || item.title === "Address" ? "_blank" : ""}
+                rel={item.title === "Instagram" || item.title === "LinkedIn" || item.title === "Address" ? "noopener noreferrer" : ""}
+                className="group bg-white border border-gray-100 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -77,11 +77,11 @@ const ContactSection: React.FC = () => {
                 onMouseLeave={() => setHoveredCard(null)}
                 whileHover={{ y: -8, backgroundColor: "#ffffff", boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
               >
-                <div className={`bg-gradient-to-r ${item.gradientClass} w-14 h-14 rounded-lg flex items-center justify-center text-white mb-4 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}>
+                <div className={`bg-gradient-to-r ${item.gradientClass} w-16 h-16 rounded-xl flex items-center justify-center text-white mb-6 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}>
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-1 group-hover:text-blue-600 transition-colors">{item.title}</h3>
-                <p className="text-gray-600 mb-3 break-all">{item.value}</p>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+                <p className="text-gray-600 mb-4 break-words">{item.value}</p>
                 
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
@@ -92,7 +92,7 @@ const ContactSection: React.FC = () => {
                   transition={{ duration: 0.3 }}
                   className="text-sm text-blue-500 font-medium flex items-center"
                 >
-                  Connect <ExternalLink className="ml-1 h-3 w-3" />
+                  {item.title === "Address" ? "View on Maps" : "Connect"} <ExternalLink className="ml-1 h-4 w-4" />
                 </motion.div>
               </motion.a>
             ))}
