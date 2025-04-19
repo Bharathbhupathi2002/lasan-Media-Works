@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Facebook, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
+import { ArrowRight, Facebook, Twitter, Instagram, Youtube, Linkedin, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 
 const HeroSection = () => {
@@ -78,13 +78,23 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
+            <motion.div
+              className="flex items-center justify-center md:justify-start gap-2 mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <MapPin className="text-cyan-400 h-6 w-6" />
+              <span className="text-cyan-400 font-medium">Tirupati, Andhra Pradesh</span>
+            </motion.div>
+
             <motion.h1 
               className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Elevate Your{" "}
+              Leading Digital Marketing Agency in{" "}
               <motion.span 
                 className="bg-gradient-to-r from-cyan-400 to-blue-400 text-transparent bg-clip-text"
                 animate={{ 
@@ -96,7 +106,7 @@ const HeroSection = () => {
                   ease: "linear"
                 }}
               >
-                Digital Presence
+                Tirupati
               </motion.span>
             </motion.h1>
             
@@ -106,7 +116,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Custom digital marketing strategies that drive growth and deliver measurable results for your business across all social media platforms.
+              Elevating businesses across Tirupati with custom digital marketing strategies that drive growth and deliver measurable results across all social media platforms.
             </motion.p>
             
             <motion.div 
