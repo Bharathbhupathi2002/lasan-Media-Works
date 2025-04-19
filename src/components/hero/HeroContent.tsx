@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SocialMediaIcons from "./SocialMediaIcons";
 
@@ -17,15 +17,7 @@ const HeroContent = ({ onGetStarted }: HeroContentProps) => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      <motion.div
-        className="flex items-center justify-center md:justify-start gap-2 mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <MapPin className="text-cyan-400 h-6 w-6" />
-        <span className="text-cyan-400 font-medium">Tirupati, Andhra Pradesh</span>
-      </motion.div>
+      {/* Removed location section */}
 
       <motion.h1 
         className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white"
