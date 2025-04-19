@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Twitter, Instagram } from "lucide-react";
+import FloatingBadge from "./FloatingBadge";
 
 const HeroImage = () => {
   return (
@@ -41,41 +42,19 @@ const HeroImage = () => {
           </motion.div>
         </div>
         
-        <motion.div 
-          className="absolute -right-6 top-1/4"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ 
-            opacity: 1, 
-            x: 0,
-            y: [-5, 5, -5]
-          }}
-          transition={{ 
-            opacity: { delay: 0.8, duration: 0.5 },
-            y: { duration: 3, repeat: Infinity, repeatType: "reverse" }
-          }}
-        >
-          <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
-            <Twitter size={24} color="white" />
-          </div>
-        </motion.div>
+        <FloatingBadge 
+          Icon={Twitter} 
+          color="bg-gradient-to-r from-blue-400 to-cyan-400" 
+          delay={0.8}
+          position="right"
+        />
         
-        <motion.div 
-          className="absolute -left-4 top-1/3"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ 
-            opacity: 1, 
-            x: 0,
-            y: [5, -5, 5]
-          }}
-          transition={{ 
-            opacity: { delay: 1.0, duration: 0.5 },
-            y: { duration: 4, repeat: Infinity, repeatType: "reverse", delay: 0.5 }
-          }}
-        >
-          <div className="w-14 h-14 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm">
-            <Instagram size={20} color="white" />
-          </div>
-        </motion.div>
+        <FloatingBadge 
+          Icon={Instagram} 
+          color="bg-gradient-to-r from-pink-500 to-rose-500" 
+          delay={1.0}
+          position="left"
+        />
       </div>
     </motion.div>
   );
