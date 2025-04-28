@@ -37,7 +37,7 @@ const HeroContent = ({ onGetStarted }: HeroContentProps) => {
             ease: "linear"
           }}
         >
-          Tirupati
+          India
         </motion.span>
       </motion.h1>
       
@@ -47,7 +47,7 @@ const HeroContent = ({ onGetStarted }: HeroContentProps) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}
       >
-        Elevating businesses across Tirupati with custom digital marketing strategies that drive growth and deliver measurable results across all social media platforms.
+        Elevating businesses with custom digital marketing strategies that drive growth and deliver measurable results across all social media platforms.
       </motion.p>
       
       <motion.div 
