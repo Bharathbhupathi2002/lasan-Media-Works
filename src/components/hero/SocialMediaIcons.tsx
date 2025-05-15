@@ -23,25 +23,27 @@ const iconVariants = {
 };
 
 const SocialMediaIcons = () => {
+  const socialLinks = [
+    { 
+      Icon: Instagram, 
+      color: "bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600",
+      link: "https://www.instagram.com/lasan_media_works/"
+    },
+    { 
+      Icon: Youtube, 
+      color: "bg-red-600", 
+      link: "https://www.youtube.com/@LaSanMediaworks/shorts"
+    },
+    { 
+      Icon: Linkedin, 
+      color: "bg-blue-700", 
+      link: "https://in.linkedin.com/company/lasan-media-works"
+    }
+  ];
+
   return (
     <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-      {[
-        { 
-          Icon: Instagram, 
-          color: "bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600",
-          link: "https://www.instagram.com/lasan_media_works/"
-        },
-        { 
-          Icon: Youtube, 
-          color: "bg-red-600", 
-          link: "https://www.youtube.com/@LaSanMediaworks/shorts"
-        },
-        { 
-          Icon: Linkedin, 
-          color: "bg-blue-700", 
-          link: "https://in.linkedin.com/company/lasan-media-works"
-        }
-      ].map((platform, i) => (
+      {socialLinks.map((platform, i) => (
         <motion.a
           href={platform.link}
           target="_blank"
