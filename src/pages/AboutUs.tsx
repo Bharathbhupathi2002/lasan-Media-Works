@@ -63,7 +63,7 @@ const AboutUs = () => {
       title: "Our Esteemed Mentor",
       description: "At Lasan Media Works, we are honored to be guided by the invaluable expertise of Shri K. S. Vasu Komandur, a distinguished Senior Advocate, educational leader, and visionary strategist. His extensive experience in law, academia, and personal development has shaped institutions and empowered individuals, making him an exceptional force in leadership and innovation.",
       quote: "Leadership is about inspiring growth, driving change, and shaping a lasting legacy.",
-      image: "/lovable-uploads/d923049a-be33-4b6b-86d1-b8f04ed1be14.png",
+      image: "/lovable-uploads/4185b61f-b4b1-4de6-bbd8-12d1517c63b7.png",
       initials: "VK"
     },
     {
@@ -71,7 +71,7 @@ const AboutUs = () => {
       title: "Mentor",
       description: "Acharya Seshaiah Kandamuru is a distinguished retired Professor of Commerce and Management from Sri Venkateswara University, Tirupati, with decades of expertise in academia, research, and business leadership. Throughout his career, he has played a pivotal role in shaping the fields of entrepreneurship, strategic management, and organizational development, mentoring countless professionals and business leaders.",
       quote: "Success is not just measured by growth but by the ability to inspire, adapt, and create lasting impact.",
-      image: "/lovable-uploads/4185b61f-b4b1-4de6-bbd8-12d1517c63b7.png",
+      image: "/lovable-uploads/d923049a-be33-4b6b-86d1-b8f04ed1be14.png",
       initials: "SK"
     }
   ];
