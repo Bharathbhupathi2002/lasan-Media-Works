@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Facebook, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Instagram, Youtube, Linkedin } from "lucide-react";
 
 const iconVariants = {
   initial: { scale: 0, opacity: 0 },
@@ -26,13 +26,26 @@ const SocialMediaIcons = () => {
   return (
     <div className="flex flex-wrap gap-4 justify-center md:justify-start">
       {[
-        { Icon: Facebook, color: "bg-blue-600" },
-        { Icon: Twitter, color: "bg-blue-400" },
-        { Icon: Instagram, color: "bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600" },
-        { Icon: Youtube, color: "bg-red-600" },
-        { Icon: Linkedin, color: "bg-blue-700" }
+        { 
+          Icon: Instagram, 
+          color: "bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600",
+          link: "https://www.instagram.com/lasan_media_works/"
+        },
+        { 
+          Icon: Youtube, 
+          color: "bg-red-600", 
+          link: "https://www.youtube.com/@LaSanMediaworks/shorts"
+        },
+        { 
+          Icon: Linkedin, 
+          color: "bg-blue-700", 
+          link: "https://in.linkedin.com/company/lasan-media-works"
+        }
       ].map((platform, i) => (
-        <motion.div
+        <motion.a
+          href={platform.link}
+          target="_blank"
+          rel="noopener noreferrer"
           key={i}
           custom={i}
           variants={iconVariants}
@@ -42,7 +55,7 @@ const SocialMediaIcons = () => {
           className={`w-12 h-12 ${platform.color} rounded-full flex items-center justify-center shadow-lg cursor-pointer backdrop-blur-md`}
         >
           <platform.Icon size={20} color="white" />
-        </motion.div>
+        </motion.a>
       ))}
     </div>
   );
