@@ -38,29 +38,46 @@ const MentorsSection = () => {
         {mentors.map((mentor, index) => (
           <motion.div 
             key={index}
-            className="glass-card p-6 md:p-8"
+            className="glass-card p-6 md:p-8 transition-all duration-300 hover:shadow-xl hover:bg-gradient-to-br hover:from-white hover:to-blue-50 hover:scale-[1.02] hover:border-lasan-blue/20"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 + (index * 0.2), duration: 0.6 }}
+            whileHover={{
+              y: -5,
+              transition: { duration: 0.3 }
+            }}
           >
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-shrink-0 flex justify-center">
-                <Avatar className="w-48 h-48 border-4 border-gray-200 shadow-lg">
-                  <AvatarImage src={mentor.image} alt={mentor.name} />
-                  <AvatarFallback>{mentor.initials}</AvatarFallback>
-                </Avatar>
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <Avatar className="w-48 h-48 border-4 border-gray-200 shadow-lg transition-all hover:border-lasan-blue">
+                    <AvatarImage src={mentor.image} alt={mentor.name} />
+                    <AvatarFallback>{mentor.initials}</AvatarFallback>
+                  </Avatar>
+                </motion.div>
               </div>
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-lasan-blue mb-1">{mentor.name}</h3>
                 <h4 className="text-xl text-gray-600 mb-4">{mentor.title}</h4>
                 <p className="text-gray-700 mb-6">{mentor.description}</p>
                 
-                <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-lasan-blue">
+                <motion.div 
+                  className="bg-gray-50 p-4 rounded-lg border-l-4 border-lasan-blue transition-all hover:bg-blue-50"
+                  whileHover={{
+                    x: 5,
+                    transition: { duration: 0.3 }
+                  }}
+                >
                   <p className="italic text-gray-700">
                     "{mentor.quote}"
                     <span className="block mt-2 font-semibold">– {mentor.name}</span>
                   </p>
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>
