@@ -2,17 +2,18 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
+import { Check } from "lucide-react";
 
 const CoreValues = () => {
   const coreValues = [
-    "Empathy – We create with purpose, making brands that resonate deeply.",
-    "Integrity – Transparency and ethical leadership are at our core.",
-    "Growth Mindset – Adapting, evolving, and innovating—because stagnation isn't an option.",
-    "Excellence with Velocity – High-quality execution with lightning speed.",
-    "Be the Case – We set industry standards, proving what's possible.",
-    "Live the Mission – Passion fuels every project, every strategy, every move we make.",
-    "Customer-Centric – Client success drives our success.",
-    "We Are a Tribe – Collaboration, loyalty, and unity define our culture."
+    "Empathy",
+    "Integrity",
+    "Growth Mindset",
+    "Excellence with Velocity",
+    "Be the Case",
+    "Live the Mission",
+    "Customer-Centric",
+    "We Are a Tribe"
   ];
   
   return (
@@ -23,7 +24,7 @@ const CoreValues = () => {
       className="mb-12"
     >
       <h2 className="text-3xl font-bold mb-8 text-lasan-blue flex items-center">
-        <span className="mr-2">💎</span> Core Values
+        Values
       </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -36,9 +37,7 @@ const CoreValues = () => {
             className="flex items-start mb-4"
           >
             <div className="flex-shrink-0 mr-3 text-lasan-blue">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+              <Check className="h-6 w-6" />
             </div>
             <p className="text-gray-700">{value}</p>
           </motion.div>
