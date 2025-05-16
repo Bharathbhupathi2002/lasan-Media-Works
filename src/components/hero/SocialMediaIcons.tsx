@@ -55,6 +55,7 @@ const SocialMediaIcons = () => {
           animate="animate"
           whileHover="hover"
           className={`w-12 h-12 ${platform.color} rounded-full flex items-center justify-center shadow-lg cursor-pointer backdrop-blur-md`}
+          aria-label={`Visit our ${platform.Icon.name} page`}
         >
           <platform.Icon size={20} color="white" />
         </motion.a>
