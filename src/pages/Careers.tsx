@@ -39,7 +39,7 @@ const Careers = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
                 >
-                  <div className="text-2xl font-bold mb-2 text-lasan-blue">IT Sales Executive</div>
+                  <div className="text-2xl font-bold mb-2 text-lasan-blue">Sales Executive</div>
                   <p className="text-gray-600">
                     Looking for enthusiastic sales professionals to join our growing team.
                   </p>
@@ -56,6 +56,54 @@ const Careers = () => {
                     Creative minds wanted to craft compelling content for our clients.
                   </p>
                 </motion.div>
+                
+                <motion.div 
+                  className="glass-card p-6 card-hover"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6, duration: 0.5 }}
+                >
+                  <div className="text-2xl font-bold mb-2 text-lasan-blue">SMM Executive</div>
+                  <p className="text-gray-600">
+                    Social media experts to manage and grow our clients' online presence.
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="glass-card p-6 card-hover"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6, duration: 0.5 }}
+                >
+                  <div className="text-2xl font-bold mb-2 text-lasan-blue">Graphic Designer</div>
+                  <p className="text-gray-600">
+                    Creative designers to produce stunning visual content for various platforms.
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="glass-card p-6 card-hover"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7, duration: 0.5 }}
+                >
+                  <div className="text-2xl font-bold mb-2 text-lasan-blue">Business Development Executive</div>
+                  <p className="text-gray-600">
+                    Strategic professionals to identify opportunities and drive company growth.
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="glass-card p-6 card-hover"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7, duration: 0.5 }}
+                >
+                  <div className="text-2xl font-bold mb-2 text-lasan-blue">HR Executive</div>
+                  <p className="text-gray-600">
+                    People-oriented professionals to manage recruitment and employee relations.
+                  </p>
+                </motion.div>
               </div>
               
               <motion.div 
@@ -65,23 +113,23 @@ const Careers = () => {
                 transition={{ delay: 0.7, duration: 0.5 }}
               >
                 <a 
-                  href="mailto:lasanmediaofficial@gmail.com" 
+                  href="mailto:hr.lasanmedia@gmail.com" 
                   className="btn-primary flex items-center"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  Send your CV: lasanmediaofficial@gmail.com
+                  Send your CV: hr.lasanmedia@gmail.com
                 </a>
                 
                 <a 
-                  href="tel:+917032360404" 
+                  href="tel:+917075850404" 
                   className="btn-primary flex items-center"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  Call us: +91 7032 360 404
+                  Call us: +91 7075 850 404
                 </a>
               </motion.div>
             </div>
