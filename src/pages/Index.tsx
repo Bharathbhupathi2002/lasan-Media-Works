@@ -6,6 +6,7 @@ import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import RequestFormSection from "@/components/RequestFormSection";
 import ContactSection from "@/components/ContactSection";
 import ClientLogosSection from "@/components/ClientLogosSection";
+import SampleWorksSection from "@/components/SampleWorksSection";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
         <HeroSection />
         <RequestFormSection />
         <ClientLogosSection />
+        <SampleWorksSection />
         <WhyChooseUsSection />
         <ContactSection />
       </div>
