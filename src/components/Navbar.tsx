@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -52,7 +51,7 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/c8fc533b-a584-4231-a3e0-7bcdd0136c6e.png" 
                 alt="LaSan Media Works Logo" 
-                className={`h-12 md:h-14 w-auto max-w-48 md:max-w-56 mr-3 transition-all ${isScrolled ? 'filter-none' : 'brightness-125'}`}
+                className={`h-12 md:h-14 w-auto max-w-64 md:max-w-80 mr-3 transition-all ${isScrolled ? 'filter-none' : 'brightness-125'}`}
               />
             </div>
           </Link>
