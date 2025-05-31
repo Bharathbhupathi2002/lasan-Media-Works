@@ -52,7 +52,7 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/c8fc533b-a584-4231-a3e0-7bcdd0136c6e.png" 
                 alt="LaSan Media Works Logo" 
-                className={`h-10 md:h-12 mr-3 transition-all ${isScrolled ? 'filter-none' : 'brightness-125'}`}
+                className={`h-14 md:h-16 mr-3 transition-all ${isScrolled ? 'filter-none' : 'brightness-125'}`}
               />
             </div>
           </Link>
