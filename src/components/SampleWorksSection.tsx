@@ -84,142 +84,163 @@ const SampleWorksSection: React.FC = () => {
   const filteredWorks = filterWorks(activeTab);
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4">
+    <section className="relative py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 modern-pattern opacity-40"></div>
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-lasan-blue/10 to-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-purple-500/10 to-lasan-blue/10 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
-          className="text-center mb-10"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">
-            Our Sample Works
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-lasan-blue to-purple-600 bg-clip-text text-transparent">
+            Our Creative Portfolio
           </h2>
-          <div className="w-20 h-1 bg-lasan-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Check out some of our creative works, including posters and videos that showcase our design and production capabilities.
+          <div className="w-24 h-1 bg-gradient-to-r from-lasan-blue to-purple-600 mx-auto mb-6 rounded-full"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            Explore our latest creative works that showcase our expertise in design and video production
           </p>
         </motion.div>
 
-        <Tabs defaultValue="all" className="w-full max-w-4xl mx-auto" onValueChange={setActiveTab}>
-          <div className="flex justify-center mb-8">
-            <TabsList>
-              <TabsTrigger value="all" className="flex items-center gap-2">
-                All
-              </TabsTrigger>
-              <TabsTrigger value="poster" className="flex items-center gap-2">
-                <Image className="h-4 w-4" />
-                Posters
-              </TabsTrigger>
-              <TabsTrigger value="video" className="flex items-center gap-2">
-                <Video className="h-4 w-4" />
-                Videos
-              </TabsTrigger>
-            </TabsList>
-          </div>
-          
-          <TabsContent value="all">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredWorks.map((work, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+        <div className="max-w-5xl mx-auto">
+          <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
+            <div className="flex justify-center mb-12">
+              <TabsList className="bg-white/80 backdrop-blur-sm shadow-lg border border-gray-200/50 p-1 rounded-xl">
+                <TabsTrigger 
+                  value="all" 
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium data-[state=active]:bg-lasan-blue data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
                 >
-                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-0 aspect-square relative">
-                      <iframe
-                        src={getEmbedLink(work.link)}
-                        className="w-full h-full border-none"
-                        allowFullScreen
-                        loading="lazy"
-                        title={`Instagram ${work.type} ${index + 1}`}
-                      ></iframe>
-                      <a 
-                        href={work.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
-                        aria-label="View on Instagram"
-                      >
-                        <Instagram className="h-5 w-5 text-pink-600" />
-                      </a>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="poster">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredWorks.map((work, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  All Works
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="poster" 
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium data-[state=active]:bg-lasan-blue data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
                 >
-                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-0 aspect-square relative">
-                      <iframe
-                        src={getEmbedLink(work.link)}
-                        className="w-full h-full border-none"
-                        allowFullScreen
-                        loading="lazy"
-                        title={`Instagram ${work.type} ${index + 1}`}
-                      ></iframe>
-                      <a 
-                        href={work.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
-                        aria-label="View on Instagram"
-                      >
-                        <Instagram className="h-5 w-5 text-pink-600" />
-                      </a>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="video">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredWorks.map((work, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  <Image className="h-4 w-4" />
+                  Posters
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="video" 
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium data-[state=active]:bg-lasan-blue data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
                 >
-                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-0 aspect-square relative">
-                      <iframe
-                        src={getEmbedLink(work.link)}
-                        className="w-full h-full border-none"
-                        allowFullScreen
-                        loading="lazy"
-                        title={`Instagram ${work.type} ${index + 1}`}
-                      ></iframe>
-                      <a 
-                        href={work.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors"
-                        aria-label="View on Instagram"
-                      >
-                        <Instagram className="h-5 w-5 text-pink-600" />
-                      </a>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+                  <Video className="h-4 w-4" />
+                  Videos
+                </TabsTrigger>
+              </TabsList>
             </div>
-          </TabsContent>
-        </Tabs>
+            
+            <TabsContent value="all">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredWorks.map((work, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:scale-105">
+                      <CardContent className="p-0 aspect-square relative">
+                        <iframe
+                          src={getEmbedLink(work.link)}
+                          className="w-full h-full border-none rounded-t-lg"
+                          allowFullScreen
+                          loading="lazy"
+                          title={`Instagram ${work.type} ${index + 1}`}
+                        ></iframe>
+                        <a 
+                          href={work.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300 hover:scale-110 group-hover:shadow-xl"
+                          aria-label="View on Instagram"
+                        >
+                          <Instagram className="h-5 w-5 text-pink-600" />
+                        </a>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-lg"></div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="poster">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredWorks.map((work, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:scale-105">
+                      <CardContent className="p-0 aspect-square relative">
+                        <iframe
+                          src={getEmbedLink(work.link)}
+                          className="w-full h-full border-none rounded-t-lg"
+                          allowFullScreen
+                          loading="lazy"
+                          title={`Instagram ${work.type} ${index + 1}`}
+                        ></iframe>
+                        <a 
+                          href={work.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300 hover:scale-110 group-hover:shadow-xl"
+                          aria-label="View on Instagram"
+                        >
+                          <Instagram className="h-5 w-5 text-pink-600" />
+                        </a>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-lg"></div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+            
+            <TabsContent value="video">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredWorks.map((work, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:scale-105">
+                      <CardContent className="p-0 aspect-square relative">
+                        <iframe
+                          src={getEmbedLink(work.link)}
+                          className="w-full h-full border-none rounded-t-lg"
+                          allowFullScreen
+                          loading="lazy"
+                          title={`Instagram ${work.type} ${index + 1}`}
+                        ></iframe>
+                        <a 
+                          href={work.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300 hover:scale-110 group-hover:shadow-xl"
+                          aria-label="View on Instagram"
+                        >
+                          <Instagram className="h-5 w-5 text-pink-600" />
+                        </a>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-lg"></div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </section>
   );
