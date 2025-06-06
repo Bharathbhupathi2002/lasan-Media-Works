@@ -50,7 +50,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center z-10">
             <div className="flex items-center">
               <img 
-                src="/lovable-uploads/c8fc533b-a584-4231-a3e0-7bcdd0136c6e.png" 
+                src="/lovable-uploads/9e2ea0e7-d3aa-4c1b-9b23-e36d5352e466.png" 
                 alt="LaSan Media Works Logo" 
                 className={`h-12 md:h-14 w-auto max-w-80 md:max-w-96 mr-3 transition-all ${isScrolled ? 'filter-none' : 'brightness-125'}`}
               />
