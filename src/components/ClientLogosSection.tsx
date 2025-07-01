@@ -105,25 +105,45 @@ const ClientLogosSection: React.FC = () => {
   );
 
   return (
-    <section className="py-16 bg-gradient-to-t from-gray-50 to-white relative">
+    <motion.section 
+      className="py-16 bg-gradient-to-t from-gray-50 to-white relative"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, margin: "-50px" }}
+    >
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">
+          <motion.h2 
+            className="text-2xl md:text-3xl font-bold mb-3"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             Trusted by Leading Brands
-          </h2>
-          <div className="w-20 h-1 bg-lasan-blue mx-auto"></div>
+          </motion.h2>
+          <motion.div 
+            className="w-20 h-1 bg-lasan-blue mx-auto"
+            initial={{ width: 0 }}
+            whileInView={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          />
         </motion.div>
 
         <motion.div
           className="max-w-6xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          viewport({ once: true }}
         >
           <Carousel
             opts={{
@@ -136,19 +156,38 @@ const ClientLogosSection: React.FC = () => {
             <CarouselContent className="py-4">
               {clientLogos.map((logo, index) => (
                 <CarouselItem key={index} className="md:basis-1/4 lg:basis-1/6 pl-4">
-                  <a 
+                  <motion.a 
                     href={logo.instagram} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="block h-24 flex items-center justify-center p-3 rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
+                    className="block h-24 flex items-center justify-center p-3 rounded-lg bg-white shadow-sm transition-all duration-300"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition({ 
+                      duration: 0.5, 
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    viewport={{ once: true }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                      y: -5,
+                      transition: { duration: 0.2 }
+                    }}
                   >
-                    <img 
+                    <motion.img 
                       src={logo.src} 
                       alt={logo.alt} 
                       className="max-h-full max-w-full object-contain" 
-                      style={{ width: 'auto', height: 'auto', maxWidth: logo.width ? `${logo.width}px` : '100%' }} 
+                      style={{ width: 'auto', height: 'auto', maxWidth: logo.width ? `${logo.width}px` : '100%' }}
+                      whileHover={{
+                        filter: "brightness(1.1) saturate(1.2)",
+                        transition: { duration: 0.2 }
+                      }}
                     />
-                  </a>
+                  </motion.a>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -159,7 +198,7 @@ const ClientLogosSection: React.FC = () => {
           </Carousel>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

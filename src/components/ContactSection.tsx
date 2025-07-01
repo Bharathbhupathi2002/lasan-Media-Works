@@ -49,17 +49,44 @@ const ContactSection: React.FC = () => {
       id="contact"
       className="py-20 bg-gradient-to-b from-pink-50 via-blue-50 to-purple-50 relative"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
       transition={{ delay: 0.4, duration: 0.6 }}
+      viewport={{ once: true, margin: "-100px" }}
     >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Contact Us</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Contact Us
+          </motion.h2>
+          <motion.div 
+            className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"
+            initial={{ width: 0 }}
+            whileInView={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          />
+          <motion.p 
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport({ once: true }}
+          >
             Get in touch with our team to discuss how we can help grow your business
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -69,19 +96,68 @@ const ContactSection: React.FC = () => {
                 href={item.link}
                 target={item.title === "Instagram" || item.title === "LinkedIn" || item.title === "Address" ? "_blank" : ""}
                 rel={item.title === "Instagram" || item.title === "LinkedIn" || item.title === "Address" ? "noopener noreferrer" : ""}
-                className="group bg-white border border-gray-100 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group bg-white border border-gray-100 rounded-xl p-8 shadow-lg transition-all duration-300 cursor-pointer"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.1 + 0.2,
+                  type: "spring",
+                  stiffness: 100 
+                }}
+                viewport={{ once: true }}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
-                whileHover={{ y: -8, backgroundColor: "#ffffff", boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+                whileHover={{ 
+                  y: -12, 
+                  backgroundColor: "#ffffff", 
+                  boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
+                  transition: { duration: 0.3 }
+                }}
               >
-                <div className={`bg-gradient-to-r ${item.gradientClass} w-16 h-16 rounded-xl flex items-center justify-center text-white mb-6 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">{item.title}</h3>
-                <p className="text-gray-600 mb-4 break-words">{item.value}</p>
+                <motion.div 
+                  className={`bg-gradient-to-r ${item.gradientClass} w-16 h-16 rounded-xl flex items-center justify-center text-white mb-6 transform transition-all duration-300 group-hover:scale-110`}
+                  whileHover={{
+                    rotate: [0, -5, 5, -5, 0],
+                    scale: 1.15,
+                    transition: { duration: 0.5 }
+                  }}
+                  animate={hoveredCard === index ? {
+                    boxShadow: [
+                      "0 0 0 0 rgba(59, 130, 246, 0.4)",
+                      "0 0 0 10px rgba(59, 130, 246, 0)",
+                      "0 0 0 0 rgba(59, 130, 246, 0)"
+                    ],
+                    transition: { duration: 1, repeat: Infinity }
+                  } : {}}
+                >
+                  <motion.div
+                    whileHover={{
+                      rotate: [0, 15, -15, 0],
+                      transition: { duration: 0.4 }
+                    }}
+                  >
+                    {item.icon}
+                  </motion.div>
+                </motion.div>
+                
+                <motion.h3 
+                  className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors"
+                  whileHover={{ 
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  {item.title}
+                </motion.h3>
+                
+                <motion.p 
+                  className="text-gray-600 mb-4 break-words"
+                  initial={{ opacity: 0.8 }}
+                  whileHover={{ opacity: 1 }}
+                >
+                  {item.value}
+                </motion.p>
                 
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
@@ -92,7 +168,13 @@ const ContactSection: React.FC = () => {
                   transition={{ duration: 0.3 }}
                   className="text-sm text-blue-500 font-medium flex items-center"
                 >
-                  {item.title === "Address" ? "View on Maps" : "Connect"} <ExternalLink className="ml-1 h-4 w-4" />
+                  {item.title === "Address" ? "View on Maps" : "Connect"} 
+                  <motion.div
+                    animate={hoveredCard === index ? { x: [0, 5, 0] } : { x: 0 }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  >
+                    <ExternalLink className="ml-1 h-4 w-4" />
+                  </motion.div>
                 </motion.div>
               </motion.a>
             ))}
@@ -101,6 +183,10 @@ const ContactSection: React.FC = () => {
         
         <motion.div 
           className="text-center mt-16 relative"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          viewport={{ once: true }}
           whileHover={{ scale: 1.05 }}
         >
           <div className="max-w-md mx-auto bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-6 rounded-xl shadow-md">
@@ -109,31 +195,35 @@ const ContactSection: React.FC = () => {
         </motion.div>
       </div>
       
-      {/* Background decorative elements */}
+      {/* Enhanced background decorative elements */}
       <motion.div 
         className="absolute top-20 left-10 w-24 h-24 bg-blue-200 rounded-full opacity-30 blur-xl"
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.4, 0.2],
+          x: [0, 20, 0],
+          y: [0, -10, 0]
         }}
         transition={{
-          duration: 4,
+          duration: 6,
           repeat: Infinity,
           repeatType: "reverse"
         }}
-      ></motion.div>
+      />
       <motion.div 
         className="absolute bottom-40 right-10 w-36 h-36 bg-purple-200 rounded-full opacity-30 blur-xl"
         animate={{ 
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
+          opacity: [0.2, 0.5, 0.2],
+          x: [0, -15, 0],
+          y: [0, 15, 0]
         }}
         transition={{
-          duration: 5,
+          duration: 8,
           repeat: Infinity,
           repeatType: "reverse"
         }}
-      ></motion.div>
+      />
     </motion.div>
   );
 };
