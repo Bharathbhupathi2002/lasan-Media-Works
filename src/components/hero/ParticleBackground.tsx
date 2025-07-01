@@ -17,7 +17,7 @@ const ParticleBackground: React.FC = () => {
         <motion.div
           key={particle.id}
           className="absolute bg-cyan-400/20 rounded-full"
-          style({
+          style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             width: particle.size,

@@ -82,7 +82,7 @@ const ContactSection: React.FC = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            viewport({ once: true }}
+            viewport={{ once: true }}
           >
             Get in touch with our team to discuss how we can help grow your business
           </motion.p>

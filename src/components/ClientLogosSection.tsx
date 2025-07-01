@@ -143,7 +143,7 @@ const ClientLogosSection: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          viewport({ once: true }}
+          viewport={{ once: true }}
         >
           <Carousel
             opts={{
@@ -163,7 +163,7 @@ const ClientLogosSection: React.FC = () => {
                     className="block h-24 flex items-center justify-center p-3 rounded-lg bg-white shadow-sm transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition({ 
+                    transition={{ 
                       duration: 0.5, 
                       delay: index * 0.1,
                       type: "spring",
